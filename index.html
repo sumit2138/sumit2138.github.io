@@ -1882,28 +1882,28 @@
         // Timeline Data
         const timelineData = [
             {
-                date: "2018 - Present",
+                date: "2025 - Present",
                 title: "Senior Frontend Developer",
                 company: "Tech Innovations Inc.",
                 description: "Leading frontend development for various client projects, mentoring junior developers, and implementing modern web technologies."
             },
             {
-                date: "2016 - 2018",
+                date: "2021 - 2024",
                 title: "UI/UX Designer & Developer",
                 company: "Creative Solutions Agency",
                 description: "Designed and developed user interfaces for web and mobile applications, working closely with clients to understand their needs."
             },
             {
-                date: "2014 - 2016",
+                date: "2019 - 2020",
                 title: "Web Developer",
                 company: "Digital Media Studio",
                 description: "Built responsive websites and web applications using HTML, CSS, JavaScript, and various CMS platforms."
             },
             {
-                date: "2012 - 2014",
-                title: "Computer Science Degree",
-                company: "University of Technology",
-                description: "Graduated with a Bachelor's degree in Computer Science, focusing on web technologies and human-computer interaction."
+                date: "2017 - 2018",
+                title: "start learing ",
+                sorce: "youtube",
+                description: "started learing form yotube and other onile platforms"
             }
         ];
 
@@ -1926,49 +1926,7 @@
             timeline.appendChild(timelineItem);
         });
 
-        // Testimonials Data
-        const testimonialsData = [
-            {
-                text: "Sumit transformed our website into a modern, user-friendly platform that significantly improved our conversion rates. His attention to detail and technical expertise are exceptional.",
-                author: "Sarah Johnson",
-                role: "Marketing Director, TechCorp",
-                avatar: "https://via.placeholder.com/50/6c63ff/ffffff?text=SJ"
-            },
-            {
-                text: "Working with Sumit was a pleasure. He understood our vision perfectly and delivered a product that exceeded our expectations. The UI/UX design he created is both beautiful and functional.",
-                author: "Michael Chen",
-                role: "Product Manager, StartupXYZ",
-                avatar: "https://via.placeholder.com/50/ff6584/ffffff?text=MC"
-            },
-            {
-                text: "Sumit's development skills are top-notch. He built a complex web application for us that performs flawlessly across all devices. I would highly recommend him for any web development project.",
-                author: "Emily Rodriguez",
-                role: "CTO, InnovateLabs",
-                avatar: "https://via.placeholder.com/50/2ecc71/ffffff?text=ER"
-            }
-        ];
-
-        // Generate Testimonials
-        const testimonialsSlider = document.querySelector('.testimonials-slider');
-        const testimonialNav = document.querySelector('.testimonial-nav');
-
-        testimonialsData.forEach((testimonial, index) => {
-            // Create testimonial slide
-            const testimonialSlide = document.createElement('div');
-            testimonialSlide.className = 'testimonial';
-            
-            testimonialSlide.innerHTML = `
-                <p class="testimonial-text">"${testimonial.text}"</p>
-                <div class="testimonial-author">
-                    <img src="${testimonial.avatar}" alt="${testimonial.author}" class="author-avatar">
-                    <div class="author-info">
-                        <h4>${testimonial.author}</h4>
-                        <p>${testimonial.role}</p>
-                    </div>
-                </div>
-            `;
-            
-            testimonialsSlider.appendChild(testimonialSlide);
+     
             
             // Create navigation dot
             const dot = document.createElement('div');
@@ -2123,4 +2081,5 @@
         });
     </script>
 </body>
+
 </html>
