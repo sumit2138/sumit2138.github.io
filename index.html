@@ -1974,6 +1974,8 @@
     const chatInput = document.getElementById('chatInput');
     const chatMessages = document.getElementById('chatMessages');
 
+            if (chatSendBtn && chatInput && chatMessages) {
+
     if (chatSendBtn && chatInput && chatMessages) {
         chatSendBtn.addEventListener('click', sendAIMessage);
         chatInput.addEventListener('keypress', (e) => {
@@ -2032,7 +2034,9 @@
         const typing = document.getElementById('typingIndicator');
         if (typing) typing.remove();
     }
+                    }
     </script>
 </body>
 </html>
+
 
