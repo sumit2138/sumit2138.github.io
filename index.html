@@ -1966,6 +1966,73 @@
                 document.body.classList.add('dark-theme');
             }
         });
+
+            // AI Chat Integration with Cloudflare Worker
+    const WORKER_URL = 'https://sumit-portfolio-api.hubm2138.workers.dev';
+    
+    const chatSendBtn = document.getElementById('chatSend');
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
+
+    if (chatSendBtn && chatInput && chatMessages) {
+        chatSendBtn.addEventListener('click', sendAIMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendAIMessage();
+        });
+    }
+
+    async function sendAIMessage() {
+        const userMessage = chatInput.value.trim();
+        if (!userMessage) return;
+        
+        addChatMessage('user', userMessage);
+        chatInput.value = '';
+        addTypingIndicator();
+        
+        try {
+            const response = await fetch(WORKER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userMessage })
+            });
+
+            const data = await response.json();
+            removeTypingIndicator();
+            
+            if (data.choices && data.choices[0]) {
+                addChatMessage('bot', data.choices[0].message.content);
+            } else {
+                addChatMessage('bot', 'Sorry, I couldn\'t process that. Please try again.');
+            }
+        } catch (error) {
+            removeTypingIndicator();
+            addChatMessage('bot', 'Sorry, I\'m having trouble connecting. Please try again later.');
+            console.error('Chat error:', error);
+        }
+    }
+
+    function addChatMessage(sender, message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${sender}-message`;
+        messageDiv.textContent = message;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function addTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'typing-indicator';
+        typingDiv.id = 'typingIndicator';
+        typingDiv.innerHTML = '<span></span><span></span><span></span>';
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const typing = document.getElementById('typingIndicator');
+        if (typing) typing.remove();
+    }
     </script>
 </body>
 </html>
+
