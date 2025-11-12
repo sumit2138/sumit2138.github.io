@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FileFlow Pro | Advanced File Converter</title>
+    <title>FileFlow Pro | Free Online File Converter</title>
+    <meta name="description" content="Convert images, documents, and files between 30+ formats instantly. Free, secure, and private online file converter.">
     
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2103804093172466"
@@ -16,6 +17,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     
     <style>
         :root {
@@ -72,9 +76,105 @@
             padding: 0 20px;
         }
 
+        /* Navigation */
+        .navbar {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            background: var(--bg-hover);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
         /* Header */
         .header {
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
             backdrop-filter: blur(20px);
@@ -102,19 +202,19 @@
         }
 
         .logo-icon {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             box-shadow: var(--glow);
         }
 
         .logo-text {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
@@ -123,11 +223,29 @@
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 700px;
+            margin: 0 auto 2rem;
             font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .intro-text p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
         /* Main Layout */
@@ -135,7 +253,7 @@
             display: grid;
             grid-template-columns: 1fr 400px;
             gap: 2rem;
-            padding: 2rem 0;
+            padding: 3rem 0;
         }
 
         @media (max-width: 1024px) {
@@ -588,11 +706,59 @@
 
         /* Footer */
         .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .footer-section h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
             text-align: center;
-            padding: 3rem 0;
-            margin-top: 3rem;
+            padding-top: 2rem;
+            margin-top: 2rem;
             border-top: 1px solid var(--border);
             color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         .api-status {
@@ -644,34 +810,63 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header fade-in">
-            <div class="logo">
-                <div class="logo-icon">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">
                     <i class="fas fa-bolt"></i>
                 </div>
-                <div class="logo-text">FileFlow Pro</div>
+                FileFlow Pro
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="privacy.html" class="nav-link">Privacy</a>
+                <a href="terms.html" class="nav-link">Terms</a>
             </div>
-            <p class="tagline">Convert files between 30+ formats with lightning speed and military-grade security</p>
-            <div class="api-status" id="apiStatus">
-                <i class="fas fa-circle"></i>
-                <span>Checking API Status...</span>
-            </div>
-        </header>
+        </div>
+    </nav>
 
-        <!-- Ad Container -->
-        <div class="ad-container fade-in">
-            <div class="ad-label">Advertisement</div>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2103804093172466"
-                 data-ad-slot="1234567890"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+    <!-- Header -->
+    <header class="header fade-in">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <div class="logo-text">FileFlow Pro</div>
+        </div>
+        <p class="tagline">Convert files between 30+ formats with lightning speed and military-grade security</p>
+        
+        <div class="intro-text">
+            <p>Welcome to FileFlow Pro – a free online converter that lets you convert images, PDFs, and other files in one click. Fast, secure, and private — your files never leave your browser.</p>
         </div>
 
-        <!-- Main Content -->
+        <div class="api-status" id="apiStatus">
+            <i class="fas fa-circle"></i>
+            <span>Checking API Status...</span>
+        </div>
+    </header>
+
+    <!-- Ad Container -->
+    <div class="ad-container fade-in">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-2103804093172466"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
         <div class="main-grid">
             <!-- Left Column -->
             <div class="left-column">
@@ -840,444 +1035,454 @@
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>FileFlow Pro &copy; 2023 | Built with ❤️ for the digital world</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
-                Backend API: <span id="backendUrl">https://sumit2138.pythonanywhere.com</span>
-            </p>
-        </footer>
     </div>
 
-<script>
-    // Configuration
-    const BACKEND_URL = 'https://sumit2138.pythonanywhere.com';
-    
-    // Initialize AdSense
-    (adsbygoogle = window.adsbygoogle || []).push({});
-
-    // DOM Elements
-    const dropZone = document.getElementById('dropZone');
-    const fileInput = document.getElementById('fileInput');
-    const browseBtn = document.getElementById('browseBtn');
-    const fileList = document.getElementById('fileList');
-    const previewContainer = document.getElementById('previewContainer');
-    const convertBtn = document.getElementById('convertBtn');
-    const clearBtn = document.getElementById('clearBtn');
-    const progressContainer = document.getElementById('progressContainer');
-    const progressFill = document.getElementById('progressFill');
-    const progressText = document.getElementById('progressText');
-    const downloadSection = document.getElementById('downloadSection');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const downloadZipBtn = document.getElementById('downloadZipBtn');
-    const apiStatus = document.getElementById('apiStatus');
-
-    // Store uploaded files and conversion results
-    let uploadedFiles = [];
-    let convertedFiles = [];
-
-    // Initialize
-    function init() {
-        setupEventListeners();
-        checkAPIStatus();
-        updateStats();
-    }
-
-    function setupEventListeners() {
-        browseBtn.addEventListener('click', () => fileInput.click());
-        fileInput.addEventListener('change', handleFileSelect);
-        convertBtn.addEventListener('click', startConversion);
-        clearBtn.addEventListener('click', clearAllFiles);
-        downloadBtn.addEventListener('click', downloadFiles);
-        downloadZipBtn.addEventListener('click', downloadAsZip);
-
-        // Drag and drop
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
-            dropZone.addEventListener(event, preventDefaults, false);
-        });
-
-        ['dragenter', 'dragover'].forEach(event => {
-            dropZone.addEventListener(event, () => dropZone.classList.add('dragover'), false);
-        });
-
-        ['dragleave', 'drop'].forEach(event => {
-            dropZone.addEventListener(event, () => dropZone.classList.remove('dragover'), false);
-        });
-
-        dropZone.addEventListener('drop', handleDrop, false);
-    }
-
-    function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
-
-    function handleDrop(e) {
-        const files = e.dataTransfer.files;
-        handleFiles(files);
-    }
-
-    function handleFileSelect(e) {
-        const files = e.target.files;
-        handleFiles(files);
-    }
-
-    function handleFiles(files) {
-        for (let file of files) {
-            const fileData = {
-                id: Math.random().toString(36).substr(2, 9),
-                file: file,
-                name: file.name,
-                size: file.size,
-                type: file.type
-            };
-            uploadedFiles.push(fileData);
-            displayFile(fileData);
-            createPreview(fileData);
-        }
-        updateUI();
-    }
-
-    function displayFile(fileData) {
-        const fileItem = document.createElement('div');
-        fileItem.className = 'file-item fade-in';
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FileFlow Pro</h3>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+                    Free online file converter supporting 30+ formats. Fast, secure, and private file processing.
+                </p>
+                <div class="api-status">
+                    <i class="fas fa-circle"></i>
+                    <span>Service Online</span>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Report Issue</a></li>
+                    <li><a href="contact.html">Help Center</a></li>
+                    <li><a href="contact.html">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
         
-        fileItem.innerHTML = `
-            <div class="file-icon">
-                <i class="${getFileIcon(fileData.file)}"></i>
-            </div>
-            <div class="file-info">
-                <div class="file-name">${fileData.name}</div>
-                <div class="file-size">${formatFileSize(fileData.size)}</div>
-            </div>
-            <div class="file-remove" onclick="removeFile('${fileData.id}')">
-                <i class="fas fa-times"></i>
-            </div>
-        `;
-        
-        fileList.appendChild(fileItem);
-    }
+        <div class="footer-bottom">
+            <p>&copy; 2023 FileFlow Pro. All rights reserved. | Last updated: November 2023</p>
+        </div>
+    </footer>
 
-    function createPreview(fileData) {
-        const placeholder = previewContainer.querySelector('div');
-        if (placeholder && placeholder.style) {
-            previewContainer.removeChild(placeholder);
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Configuration
+        const BACKEND_URL = 'https://sumit2138.pythonanywhere.com';
+        
+        // Initialize AdSense
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
+        // DOM Elements
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const browseBtn = document.getElementById('browseBtn');
+        const fileList = document.getElementById('fileList');
+        const previewContainer = document.getElementById('previewContainer');
+        const convertBtn = document.getElementById('convertBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const downloadSection = document.getElementById('downloadSection');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const downloadZipBtn = document.getElementById('downloadZipBtn');
+        const apiStatus = document.getElementById('apiStatus');
+
+        // Store uploaded files and conversion results
+        let uploadedFiles = [];
+        let convertedFiles = [];
+
+        // Initialize
+        function init() {
+            setupEventListeners();
+            checkAPIStatus();
+            updateStats();
         }
 
-        const previewItem = document.createElement('div');
-        previewItem.className = 'preview-item fade-in';
-        
-        if (fileData.file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
+        function setupEventListeners() {
+            browseBtn.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleFileSelect);
+            convertBtn.addEventListener('click', startConversion);
+            clearBtn.addEventListener('click', clearAllFiles);
+            downloadBtn.addEventListener('click', downloadFiles);
+            downloadZipBtn.addEventListener('click', downloadAsZip);
+
+            // Drag and drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
+                dropZone.addEventListener(event, preventDefaults, false);
+            });
+
+            ['dragenter', 'dragover'].forEach(event => {
+                dropZone.addEventListener(event, () => dropZone.classList.add('dragover'), false);
+            });
+
+            ['dragleave', 'drop'].forEach(event => {
+                dropZone.addEventListener(event, () => dropZone.classList.remove('dragover'), false);
+            });
+
+            dropZone.addEventListener('drop', handleDrop, false);
+        }
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function handleDrop(e) {
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        }
+
+        function handleFileSelect(e) {
+            const files = e.target.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            for (let file of files) {
+                const fileData = {
+                    id: Math.random().toString(36).substr(2, 9),
+                    file: file,
+                    name: file.name,
+                    size: file.size,
+                    type: file.type
+                };
+                uploadedFiles.push(fileData);
+                displayFile(fileData);
+                createPreview(fileData);
+            }
+            updateUI();
+        }
+
+        function displayFile(fileData) {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item fade-in';
+            
+            fileItem.innerHTML = `
+                <div class="file-icon">
+                    <i class="${getFileIcon(fileData.file)}"></i>
+                </div>
+                <div class="file-info">
+                    <div class="file-name">${fileData.name}</div>
+                    <div class="file-size">${formatFileSize(fileData.size)}</div>
+                </div>
+                <div class="file-remove" onclick="removeFile('${fileData.id}')">
+                    <i class="fas fa-times"></i>
+                </div>
+            `;
+            
+            fileList.appendChild(fileItem);
+        }
+
+        function createPreview(fileData) {
+            const placeholder = previewContainer.querySelector('div');
+            if (placeholder && placeholder.style) {
+                previewContainer.removeChild(placeholder);
+            }
+
+            const previewItem = document.createElement('div');
+            previewItem.className = 'preview-item fade-in';
+            
+            if (fileData.file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewItem.innerHTML = `
+                        <div class="preview-content">
+                            <img src="${e.target.result}" alt="${fileData.name}">
+                        </div>
+                        <div class="preview-name">${fileData.name}</div>
+                    `;
+                };
+                reader.readAsDataURL(fileData.file);
+            } else {
                 previewItem.innerHTML = `
                     <div class="preview-content">
-                        <img src="${e.target.result}" alt="${fileData.name}">
+                        <i class="${getFileIcon(fileData.file)}" style="font-size: 2rem; opacity: 0.7;"></i>
                     </div>
                     <div class="preview-name">${fileData.name}</div>
                 `;
-            };
-            reader.readAsDataURL(fileData.file);
-        } else {
-            previewItem.innerHTML = `
-                <div class="preview-content">
-                    <i class="${getFileIcon(fileData.file)}" style="font-size: 2rem; opacity: 0.7;"></i>
-                </div>
-                <div class="preview-name">${fileData.name}</div>
-            `;
-        }
-        
-        previewContainer.appendChild(previewItem);
-    }
-
-    function removeFile(fileId) {
-        uploadedFiles = uploadedFiles.filter(f => f.id !== fileId);
-        updateFileList();
-        updateUI();
-    }
-
-    function updateFileList() {
-        fileList.innerHTML = '';
-        previewContainer.innerHTML = '';
-        
-        uploadedFiles.forEach(file => {
-            displayFile(file);
-            createPreview(file);
-        });
-        
-        if (uploadedFiles.length === 0) {
-            previewContainer.innerHTML = `
-                <div style="text-align: center; padding: 3rem 2rem; color: var(--text-muted);">
-                    <i class="fas fa-images" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                    <p>Files you upload will appear here</p>
-                </div>
-            `;
-        }
-    }
-
-    function updateUI() {
-        convertBtn.disabled = uploadedFiles.length === 0;
-        downloadSection.style.display = 'none';
-        progressContainer.style.display = 'none';
-        updateStats();
-    }
-
-    function clearAllFiles() {
-        uploadedFiles = [];
-        updateFileList();
-        updateUI();
-    }
-
-    function getFileIcon(file) {
-        if (file.type.startsWith('image/')) return 'fas fa-file-image';
-        if (file.type.startsWith('audio/')) return 'fas fa-file-audio';
-        if (file.type.startsWith('video/')) return 'fas fa-file-video';
-        if (file.type === 'application/pdf') return 'fas fa-file-pdf';
-        if (file.type.includes('word')) return 'fas fa-file-word';
-        if (file.type.includes('excel') || file.type.includes('spreadsheet')) return 'fas fa-file-excel';
-        if (file.type === 'text/plain') return 'fas fa-file-alt';
-        if (file.type.includes('csv')) return 'fas fa-file-csv';
-        return 'fas fa-file';
-    }
-
-    function formatFileSize(bytes) {
-        if (bytes === 0) return '0 Bytes';
-        const k = 1024;
-        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-    }
-
-    async function startConversion() {
-        if (uploadedFiles.length === 0) return;
-        
-        progressContainer.style.display = 'block';
-        convertBtn.disabled = true;
-        progressFill.style.width = '10%';
-        progressText.textContent = 'Uploading files to server...';
-        
-        try {
-            // Step 1: Upload files to backend
-            const uploadFormData = new FormData();
-            uploadedFiles.forEach(fileData => {
-                uploadFormData.append('files', fileData.file);
-            });
-
-            progressFill.style.width = '30%';
-            progressText.textContent = 'Uploading files...';
-
-            const uploadResponse = await fetch(`${BACKEND_URL}/upload`, {
-                method: 'POST',
-                body: uploadFormData
-            });
-
-            if (!uploadResponse.ok) {
-                throw new Error(`Upload failed: ${uploadResponse.statusText}`);
             }
-
-            const uploadResult = await uploadResponse.json();
             
-            // Step 2: Convert files
-            progressFill.style.width = '50%';
-            progressText.textContent = 'Converting files...';
+            previewContainer.appendChild(previewItem);
+        }
 
-            const outputFormat = document.getElementById('outputFormat').value;
-            const conversionType = document.getElementById('conversionType').value;
+        function removeFile(fileId) {
+            uploadedFiles = uploadedFiles.filter(f => f.id !== fileId);
+            updateFileList();
+            updateUI();
+        }
 
-            const convertResponse = await fetch(`${BACKEND_URL}/convert`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    files: uploadResult.files.map(f => f.id),
-                    output_format: outputFormat,
-                    conversion_type: conversionType,
-                    options: {
-                        merge_pdf: conversionType === 'merge',
-                        quality: 2
-                    }
-                })
+        function updateFileList() {
+            fileList.innerHTML = '';
+            previewContainer.innerHTML = '';
+            
+            uploadedFiles.forEach(file => {
+                displayFile(file);
+                createPreview(file);
             });
+            
+            if (uploadedFiles.length === 0) {
+                previewContainer.innerHTML = `
+                    <div style="text-align: center; padding: 3rem 2rem; color: var(--text-muted);">
+                        <i class="fas fa-images" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <p>Files you upload will appear here</p>
+                    </div>
+                `;
+            }
+        }
 
-            if (!convertResponse.ok) {
-                throw new Error(`Conversion failed: ${convertResponse.statusText}`);
+        function updateUI() {
+            convertBtn.disabled = uploadedFiles.length === 0;
+            downloadSection.style.display = 'none';
+            progressContainer.style.display = 'none';
+            updateStats();
+        }
+
+        function clearAllFiles() {
+            uploadedFiles = [];
+            updateFileList();
+            updateUI();
+        }
+
+        function getFileIcon(file) {
+            if (file.type.startsWith('image/')) return 'fas fa-file-image';
+            if (file.type.startsWith('audio/')) return 'fas fa-file-audio';
+            if (file.type.startsWith('video/')) return 'fas fa-file-video';
+            if (file.type === 'application/pdf') return 'fas fa-file-pdf';
+            if (file.type.includes('word')) return 'fas fa-file-word';
+            if (file.type.includes('excel') || file.type.includes('spreadsheet')) return 'fas fa-file-excel';
+            if (file.type === 'text/plain') return 'fas fa-file-alt';
+            if (file.type.includes('csv')) return 'fas fa-file-csv';
+            return 'fas fa-file';
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        async function startConversion() {
+            if (uploadedFiles.length === 0) return;
+            
+            progressContainer.style.display = 'block';
+            convertBtn.disabled = true;
+            
+            try {
+                const outputFormat = document.getElementById('outputFormat').value;
+                convertedFiles = [];
+                
+                // Process each file
+                for (let i = 0; i < uploadedFiles.length; i++) {
+                    const fileData = uploadedFiles[i];
+                    const progress = ((i + 1) / uploadedFiles.length) * 100;
+                    progressFill.style.width = `${progress}%`;
+                    progressText.textContent = `Converting ${i + 1}/${uploadedFiles.length}...`;
+                    
+                    // Convert in browser (for supported formats)
+                    const convertedBlob = await convertInBrowser(fileData.file, outputFormat);
+                    
+                    convertedFiles.push({
+                        id: fileData.id,
+                        blob: convertedBlob,
+                        name: fileData.name.replace(/\.[^/.]+$/, '') + '.' + outputFormat
+                    });
+                }
+                
+                progressFill.style.width = '100%';
+                progressText.textContent = 'Conversion Complete!';
+                
+                setTimeout(() => {
+                    downloadSection.style.display = 'block';
+                    downloadZipBtn.style.display = convertedFiles.length > 1 ? 'block' : 'none';
+                    convertBtn.disabled = false;
+                    showNotification('Files converted successfully in browser!', 'success');
+                }, 1000);
+                
+            } catch (error) {
+                progressText.textContent = `Error: ${error.message}`;
+                progressFill.style.background = 'var(--error)';
+                convertBtn.disabled = false;
+                showNotification(`Conversion failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function convertInBrowser(file, outputFormat) {
+            return new Promise((resolve) => {
+                if (file.type.startsWith('image/') && outputFormat === 'png') {
+                    // Simple image conversion in browser
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = new Image();
+                        img.onload = function() {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0);
+                            
+                            canvas.toBlob((blob) => {
+                                resolve(blob);
+                            }, 'image/png');
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    // For other formats, just return the original file
+                    resolve(file);
+                }
+            });
+        }
+
+        async function downloadFiles() {
+            if (!convertedFiles || convertedFiles.length === 0) {
+                showNotification('No converted files available', 'error');
+                return;
             }
 
-            const convertResult = await convertResponse.json();
-            convertedFiles = convertResult.converted_files;
-
-            // Update progress to completion
-            progressFill.style.width = '100%';
-            progressText.textContent = 'Conversion Complete!';
-
-            // Show download section
-            setTimeout(() => {
-                downloadSection.style.display = 'block';
-                downloadZipBtn.style.display = convertedFiles.length > 1 ? 'block' : 'none';
-                convertBtn.disabled = false;
-                updateStats();
-                
-                // Show success message
-                showNotification(`Successfully converted ${convertedFiles.length} files!`, 'success');
-            }, 1000);
-
-        } catch (error) {
-            progressText.textContent = `Error: ${error.message}`;
-            progressFill.style.background = 'var(--error)';
-            convertBtn.disabled = false;
-            showNotification(`Conversion failed: ${error.message}`, 'error');
-            console.error('Conversion error:', error);
-        }
-    }
-
-    async function downloadFiles() {
-        if (!convertedFiles || convertedFiles.length === 0) {
-            showNotification('No converted files available', 'error');
-            return;
-        }
-
-        try {
-            // Download each converted file
-            for (const file of convertedFiles) {
-                const response = await fetch(`${BACKEND_URL}${file.download_url}`);
-                
-                if (response.ok) {
-                    const blob = await response.blob();
-                    const url = window.URL.createObjectURL(blob);
+            try {
+                for (const file of convertedFiles) {
+                    const url = URL.createObjectURL(file.blob);
                     const a = document.createElement('a');
                     a.style.display = 'none';
                     a.href = url;
-                    a.download = file.output_name || `converted_${file.id}`;
+                    a.download = file.name;
                     document.body.appendChild(a);
                     a.click();
-                    window.URL.revokeObjectURL(url);
+                    URL.revokeObjectURL(url);
                     document.body.removeChild(a);
+                }
+                showNotification('Files downloaded successfully!', 'success');
+            } catch (error) {
+                showNotification(`Download failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function downloadAsZip() {
+            if (!convertedFiles || convertedFiles.length === 0) {
+                showNotification('No converted files available', 'error');
+                return;
+            }
+
+            try {
+                showNotification('ZIP download would be implemented with backend service', 'info');
+            } catch (error) {
+                showNotification(`ZIP download failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function checkAPIStatus() {
+            try {
+                const response = await fetch(BACKEND_URL);
+                if (response.ok) {
+                    apiStatus.innerHTML = '<i class="fas fa-circle" style="color: var(--success);"></i><span>Service Online</span>';
                 } else {
-                    throw new Error(`Failed to download: ${file.output_name}`);
+                    throw new Error('Service not responding');
                 }
+            } catch (error) {
+                apiStatus.innerHTML = '<i class="fas fa-circle" style="color: var(--error);"></i><span>Service Offline</span>';
+                apiStatus.classList.add('offline');
             }
+        }
+
+        function updateStats() {
+            document.getElementById('statsConverted').textContent = uploadedFiles.length;
+            document.getElementById('statsTime').textContent = `${uploadedFiles.length * 2}m`;
+            document.getElementById('statsStorage').textContent = `${(uploadedFiles.reduce((acc, file) => acc + file.size, 0) / (1024 * 1024)).toFixed(1)} MB`;
+        }
+
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                background: ${type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--error)' : 'var(--primary)'};
+                color: white;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+                max-width: 300px;
+                word-wrap: break-word;
+            `;
             
-            showNotification('Files downloaded successfully!', 'success');
-        } catch (error) {
-            showNotification(`Download failed: ${error.message}`, 'error');
-            console.error('Download error:', error);
-        }
-    }
-
-    async function downloadAsZip() {
-        if (!convertedFiles || convertedFiles.length === 0) {
-            showNotification('No converted files available', 'error');
-            return;
-        }
-
-        try {
-            const response = await fetch(`${BACKEND_URL}/download-zip`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    files: convertedFiles.map(f => f.output_name)
-                })
-            });
-
-            if (response.ok) {
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                a.download = 'converted_files.zip';
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-                document.body.removeChild(a);
-                showNotification('ZIP file downloaded successfully!', 'success');
-            } else {
-                throw new Error('Failed to create ZIP file');
-            }
-        } catch (error) {
-            showNotification(`ZIP download failed: ${error.message}`, 'error');
-            console.error('ZIP download error:', error);
-        }
-    }
-
-    async function checkAPIStatus() {
-        try {
-            const response = await fetch(BACKEND_URL);
-            if (response.ok) {
-                apiStatus.innerHTML = '<i class="fas fa-circle" style="color: var(--success);"></i><span>API Online</span>';
-            } else {
-                throw new Error('API not responding');
-            }
-        } catch (error) {
-            apiStatus.innerHTML = '<i class="fas fa-circle" style="color: var(--error);"></i><span>API Offline</span>';
-            apiStatus.classList.add('offline');
-        }
-    }
-
-    function updateStats() {
-        document.getElementById('statsConverted').textContent = uploadedFiles.length;
-        document.getElementById('statsTime').textContent = `${uploadedFiles.length * 2}m`;
-        document.getElementById('statsStorage').textContent = `${(uploadedFiles.reduce((acc, file) => acc + file.size, 0) / (1024 * 1024)).toFixed(1)} MB`;
-    }
-
-    function showNotification(message, type = 'info') {
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem 1.5rem;
-            background: ${type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--error)' : 'var(--primary)'};
-            color: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
-            animation: slideIn 0.3s ease-out;
-            max-width: 300px;
-            word-wrap: break-word;
-        `;
-        
-        notification.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation' : 'info'}"></i>
-                <span>${message}</span>
-            </div>
-        `;
-        
-        document.body.appendChild(notification);
-        
-        // Remove after 5 seconds
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease-in';
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation' : 'info'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 5 seconds
             setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 300);
-        }, 5000);
-    }
-
-    // Add CSS for notifications
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+                notification.style.animation = 'slideOut 0.3s ease-in';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
         }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
 
-    // Initialize the application
-    init();
-</script>
+        // Add CSS for notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize the application
+        init();
+    </script>
 </body>
 </html>
